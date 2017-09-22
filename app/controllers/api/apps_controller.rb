@@ -1,48 +1,48 @@
-class Api::AppsController < ApplicationController
+class Api::AppsController < ApplicationController  
   before_action :set_app, only: [:show, :update, :destroy]
+    
+  def index    
+    render json: App.all  
+  end 
 
-  def index
-    render json: App.all
+  def show  
+  end 
+
+  def create    
+    app = App.new(app_params)    
+    if app.save      
+      render json: app    
+    else      
+      render json: { errors: app.errors.full_messages.join(', ') }    
+    end  
   end
 
-  def show
+  def update    
+    if @app.update(app_params)      
+      render json: @app    
+    else      
+      render json: { errors: app.errors.full_messages.join(', ') }    
+    end  
   end
 
-  def create
-    app = App.new(app_params)
-    if app.save
-      render json: app
-    else
-      render json: status: 422
-    end
+  def destroy    
+    @app.destroy  
   end
 
-  def update
-    if @app.update(app_params)
-      render json: @app
-    else
-      render json: status: 422
-    end
-  end
-
-  def destroy
-    @app.destroy
-  end
-  
   private
 
-  def set_app
-    @app = App.find(params[:id])
+  def set_app    
+    @app = App.find(params[:id])  
   end
 
-  def app_params
-    params..require(:app).permit(      
+  def app_params    
+    params.require(:app).permit(      
       :name,      
       :description,      
       :logo,      
       :price,      
       :category,      
       :version    
-    )
-  end
+      )  
+    end 
 end

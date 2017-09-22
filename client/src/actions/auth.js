@@ -10,6 +10,7 @@ export const registerUser = (email, password, passwordConfirmation, history) => 
         history.push('/');
       })
       .catch( res => {
+        console.log(res.response.data.errors)
         const message = res.response.data.errors.join(',');
         dispatch(setFlash(message, 'error'));
     });
