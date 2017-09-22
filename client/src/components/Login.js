@@ -43,7 +43,7 @@ class Login extends Component {
               required
               id='password'
               value={password}
-              placeholder='Password'
+              placeholder='Password must be longer than 6 characters'
               type='password'
               onChange={this.handleChange}
             />

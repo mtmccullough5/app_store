@@ -19,7 +19,8 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <ProtectedRoute exact path='/' component={Home} />
-            <ProtectedRoute exact path="/AppCards" component={AppCards} />
+            <ProtectedRoute exact path='/AppCards' component={AppCards} />
+            <ProtectedRoute exact path={`/App/${app.id}`} component={SingleApp} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route component={NoMatch} />
