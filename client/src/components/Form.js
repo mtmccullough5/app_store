@@ -40,7 +40,7 @@ class Form extends React.Component {
         <input
           id='price'
           placeholder='Price'
-          type='number'
+          type='float'
           value={price}
           onChange={this.handleChange}
         />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Segment, Button } from 'semantic-ui-react';
+import { Header, Segment, Button, Card, Image, Container, Divider} from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
@@ -23,14 +23,18 @@ class SingleApp extends React.Component {
   show = () => {
     const { name, description, category, price, version, logo, id } = this.state.app;
     return(
-      <div>
-        <h1>{name}</h1>
-        <h3>{description}</h3>
-        <h2>{category}</h2>
-        <h3>${price}</h3>
-        <h3>{version}</h3>
-        <button onClick={ () => this.deleteApp(id)}>Delete App</button>
-      </div>
+        <Card key={id}>
+          <Card.Content>
+            <Image src={logo} />
+            <Divider />
+            <h1>{name}</h1>
+            <h3>{description}</h3>
+            <Divider />
+            <h2>{category}</h2>
+            <h3>${price}</h3>
+            <h3>{version}</h3>
+          </Card.Content>
+        </Card>
     )
   }
   submit = (app) => {
@@ -49,12 +53,13 @@ class SingleApp extends React.Component {
   render() {
     const { edit } = this.state;
     return(
-      <div>
+      <Container>
         { edit ? this.edit() : this.show() }
         <button onClick={this.toggleEdit}>
           { edit ? 'Cancel' : 'Edit' }
         </button>
-      </div>
+        <button onClick={ () => this.deleteApp(this.state)}>Delete App</button>
+      </Container>
     )
   }
 }
