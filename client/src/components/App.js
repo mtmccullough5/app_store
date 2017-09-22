@@ -9,6 +9,7 @@ import ProtectedRoute from './ProtectedRoute';
 import { Switch, Route } from 'react-router-dom';
 import FetchUser from './FetchUser';
 import AppCards from './AppCards';
+import SingleApp from './SingleApp'
 
 class App extends Component {
   render() {
@@ -18,9 +19,8 @@ class App extends Component {
         <Flash />
         <FetchUser>
           <Switch>
-            <ProtectedRoute exact path='/' component={Home} />
-            <ProtectedRoute exact path='/AppCards' component={AppCards} />
-            <ProtectedRoute exact path={`/App/${app.id}`} component={SingleApp} />
+            <ProtectedRoute exact path='/' component={AppCards} />
+            <ProtectedRoute exact path='/App/:id' component={SingleApp} />         
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route component={NoMatch} />

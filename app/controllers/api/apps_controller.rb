@@ -1,11 +1,12 @@
 class Api::AppsController < ApplicationController  
   before_action :set_app, only: [:show, :update, :destroy]
-    
+
   def index    
     render json: App.all  
   end 
 
-  def show  
+  def show
+    render json: @app  
   end 
 
   def create    
