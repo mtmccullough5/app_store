@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header, Segment, Button, Card, Image, Container, Divider} from 'semantic-ui-react';
 
 class Form extends React.Component {
   defaultValue = { name: '', price: '', category: '',description: '', version: '' };
@@ -56,7 +57,7 @@ class Form extends React.Component {
           value={version}
           onChange={this.handleChange}
         />
-        <button type='submit'>Submit</button>
+        <Button type='submit'>Submit</Button>
       </form>
     )
   }

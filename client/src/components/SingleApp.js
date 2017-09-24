@@ -23,7 +23,7 @@ class SingleApp extends React.Component {
   show = () => {
     const { name, description, category, price, version, logo, id } = this.state.app;
     return(
-        <Card key={id}>
+        <Card key={id} centered={true}>
           <Card.Content>
             <Image src={logo} />
             <Divider />
@@ -53,12 +53,14 @@ class SingleApp extends React.Component {
   render() {
     const { edit } = this.state;
     return(
-      <Container>
+      <Container textAlign={'center'}>
         { edit ? this.edit() : this.show() }
-        <button onClick={this.toggleEdit}>
+        <Button onClick={this.toggleEdit}>
           { edit ? 'Cancel' : 'Edit' }
-        </button>
-        <button onClick={ () => this.deleteApp(this.state)}>Delete App</button>
+        </Button>
+        <Button onClick={ () => this.deleteApp(this.state.app.id)}>
+          Delete App
+        </Button>
       </Container>
     )
   }
